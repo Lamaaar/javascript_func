@@ -4,3 +4,25 @@ table, td, th {
     padding: 4px;
     text-align: center;
 }
+
+th {
+    background-color: aqua;
+}
+
+table tbody > tr {
+    background-color: red;
+}
+
+tbody tr:nth-child(2n) {
+    background-color: green;
+}
+
+table thead~tbody > tr {
+    background-color: blanchedalmond;
+}
+
+tbody tr:hover {
+    background-color: yellow;
+    font-weight: bold;
+    cursor: crosshair;
+}
