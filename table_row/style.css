@@ -7,3 +7,40 @@ tr td:last-child,
 tr td:nth-last-child(3) {
     background-color: aqua;
 }
+
+#gyakorlas {
+    background-color: orangered;
+    color: white;
+}
+
+/* #gyakorlas button:has(+p) {
+    background-color: violet;
+} */
+
+#gyakorlas:has(+a:hover) button {
+    color: crimson;
+}
+
+#gyakorlas button:not(:has(+p)) {
+    background-color: violet;
+}
+
+tr:not(:has(td[rowspan])) + tr:not(:has(td[rowspan])):hover td {
+    background-color: blanchedalmond;
+}
+
+tbody tr:has(td[rowspan]):hover td{
+    background-color: aquamarine;
+}
+
+tbody tr:has(td[rowspan]):has(+tr:hover) td {
+    background-color: aquamarine;
+}
+
+tbody tr:has(:not([rowspan])):has(+tr:hover)+ tr td {
+    background-color: aquamarine;
+}
+
+tbody tr:has(td[rowspan]):hover+tr td{
+    background-color: aquamarine;
+}
