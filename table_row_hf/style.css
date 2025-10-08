@@ -1,0 +1,15 @@
+table, td, th {
+    border: 1px solid salmon;
+    border-collapse: collapse;
+    padding: 8px;
+}
+
+tr:has(td):hover td, tr:has(td[rowspan]):has(+tr:hover) td, tr:has(td[rowspan]):hover + tr td {
+    background-color: lightpink;
+    color: darkred;
+    font-weight: bold;
+}
+
+tr td:nth-last-child(3), tr td:last-child {
+    background-color: lightblue;
+}
