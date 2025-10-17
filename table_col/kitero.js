@@ -123,3 +123,16 @@ for (const data of tableData) {
         tr.appendChild(td3);
     }
 }
+
+/**
+ * 
+ * @param {string} cellType - Meghatározza, hogy th/td typus lesz
+ * @param {string} cellContent - Meghatározza a cella tartalmát
+ * @param {HTMLTableRowElement} cellRow - Meghatározza, hogy melyik sorhoz fogjuk csatolni
+ */
+
+function createCellElement(cellType, cellContent, cellRow) {
+    const cell = document.createElement(cellType)
+    cell.innerText = cellContent;
+    cellRow.appendChild(cell);
+}
