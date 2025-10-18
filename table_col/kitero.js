@@ -69,6 +69,12 @@ const tableData = [
     }
 ]
 
+const headData = [
+    "Szerző neve",
+    "Korszak",
+    "Szerelmek"
+]
+
 document.body.appendChild(document.createElement('hr'));
 
 // HF
@@ -82,18 +88,13 @@ table.appendChild(thead);
 const thead_tr = document.createElement('tr');
 thead.appendChild(thead_tr);
 
-const th = document.createElement('th');
-th.innerText = "Szerző neve";
-thead_tr.appendChild(th);
+for (const title of headData) {
+    const cell = createCellElement("th", title, thead_tr);
 
-const th2 = document.createElement('th');
-th2.innerText = "Korszak";
-thead_tr.appendChild(th2);
-
-const th3 = document.createElement('th');
-th3.innerText = "Szerelmek";
-th3.colSpan = 2;
-thead_tr.appendChild(th3);
+    if (title == headData[2]) {
+        cell.colSpan = 2;
+    }
+}
 
 const tbody = document.createElement('tbody');
 table.appendChild(tbody);
@@ -102,25 +103,16 @@ for (const data of tableData) {
     const tr = document.createElement('tr');
     tbody.appendChild(tr);
 
-    const td = document.createElement('td');
-    td.innerText = data.author;
-    tr.appendChild(td);
-
-    const td2 = document.createElement('td');
-    td2.innerText = data.era;
-    tr.appendChild(td2);
-
+    createCellElement("td", data.author, tr);
+    createCellElement("td", data.era, tr);
+    
     if (data.loves.length > 1) {
         for (let i = 0; i < data.loves.length; i++) {
-            const td3 = document.createElement('td');
-            td3.innerText = data.loves[i];
-            tr.appendChild(td3);
+            createCellElement("td", data.loves[i], tr);
         }
     } else {
-        const td3 = document.createElement('td');
-        td3.innerText = data.loves[0];
-        td3.colSpan = 2;
-        tr.appendChild(td3);
+        const cell = createCellElement("td", data.loves[0], tr);
+        cell.colSpan = 2;
     }
 }
 
@@ -129,10 +121,13 @@ for (const data of tableData) {
  * @param {string} cellType - Meghatározza, hogy th/td typus lesz
  * @param {string} cellContent - Meghatározza a cella tartalmát
  * @param {HTMLTableRowElement} cellRow - Meghatározza, hogy melyik sorhoz fogjuk csatolni
+ * @returns {HTMLTableCellElement}
  */
 
 function createCellElement(cellType, cellContent, cellRow) {
     const cell = document.createElement(cellType)
     cell.innerText = cellContent;
     cellRow.appendChild(cell);
+
+    return cell;
 }
