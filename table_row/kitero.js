@@ -80,6 +80,13 @@ arr.forEach(tr_data => {
 
     const td_war = document.createElement("td");
     td_war.innerText = tr_data.nationality;
+    td_war.addEventListener("click", function (e) {
+        /**
+         * @type {HTMLTableCellElement}
+         */
+        const target = e.target;
+        target.classList.add('marked');
+    });
     tr.appendChild(td_war);
 
     const td_team1 = document.createElement("td");

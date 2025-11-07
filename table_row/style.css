@@ -44,3 +44,7 @@ tbody tr:has(:not([rowspan])):has(+tr:hover)+ tr td {
 tbody tr:has(td[rowspan]):hover+tr td{
     background-color: aquamarine;
 }
+
+.marked {
+    color: red;
+}
