@@ -76,29 +76,33 @@ formElement.addEventListener('submit', HTMLFormEventListener);
 const newFormElement = document.createElement("form");
 document.body.appendChild(newFormElement);
 
-// const inputs = [
-//     {
-//         id: "nemzetiseg",
-//         content: "Nemzetiség:"
-//     },
-//     {
-//         id: "szerzo1",
-//         content: "Szerző:"
-//     },
-//     {
-//         id: "mu1",
-//         content: "Mű:"
-//     },
-//     {
-//         id: "szerzo2",
-//         content: "Másik Szerző:"
-//     },
-//     {
-//         id: "mu2",
-//         content: "Mű:"
-//     }
-// ]
+const inputs = [
+    {
+        id: "nemzetiseg",
+        content: "Nemzetiség:"
+    },
+    {
+        id: "szerzo1",
+        content: "Szerző:"
+    },
+    {
+        id: "mu1",
+        content: "Mű:"
+    },
+    {
+        id: "szerzo2",
+        content: "Másik Szerző:"
+    },
+    {
+        id: "mu2",
+        content: "Mű:"
+    }
+]
 
-// inputs.forEach(input => {
-//     createFormElement(newFormElement, input.id, input.content);
-// });
+inputs.forEach(input => {
+    createFormElement(newFormElement, input.id, input.content);
+});
+
+const button = document.createElement("button");
+button.innerText = "Hozzáadás"
+newFormElement.appendChild(button);

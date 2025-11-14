@@ -24,21 +24,27 @@ function renderTableBody(data) {
  */
 
 function createFormElement(form, id, labelContent) {
+    const div = document.createElement("div");
+    form.appendChild(div);
+
     const label = document.createElement("label");
     label.htmlFor = id;
     label.innerText = labelContent;
-    form.appendChild(label);
+    div.appendChild(label);
     
-    form.appendChild(document.createElement("br"));
+    div.appendChild(document.createElement("br"));
     
     const input = document.createElement("input");
     input.type = "text";
     input.id = id;
     input.name = id;
-    form.appendChild(input);
+    div.appendChild(input);
 
-    form.appendChild(document.createElement("br"));
-    form.appendChild(document.createElement("br"));
+    const span = document.createElement("span");
+    div.appendChild(span);
+
+    div.appendChild(document.createElement("br"));
+    div.appendChild(document.createElement("br"));
 }
 
 /**
@@ -186,4 +192,8 @@ function HTMLFormEventListener(e) {
     const tbody = document.querySelector("#tbody2");
     
     renderTableRow(tbody, emptyObj);
+}
+
+function validateFields(inputField1, inputField2, inputField3) {
+    // todo
 }
