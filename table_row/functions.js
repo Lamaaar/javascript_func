@@ -57,7 +57,7 @@ function renderTableRow(tableBody, countryWriters) {
     const tr = document.createElement("tr");
     tableBody.appendChild(tr);
 
-    const tdNationality = createCell("td", countryWriters.nationality, tr);
+    const tdNationality = renderTableCell("td", countryWriters.nationality, tr);
     tdNationality.addEventListener("click", function (e) {
         /**
          * @type {HTMLTableCellElement}
@@ -66,8 +66,8 @@ function renderTableRow(tableBody, countryWriters) {
         target.classList.add('marked');
     });
 
-    const tdAuthor1 = createCell("td", countryWriters.author1, tr);
-    const tdAuthorTitle1 = createCell("td", countryWriters.author1Title, tr);
+    const tdAuthor1 = renderTableCell("td", countryWriters.author1, tr);
+    const tdAuthorTitle1 = renderTableCell("td", countryWriters.author1Title, tr);
 
     if (countryWriters.author2 && countryWriters.author2Title) {
         tdNationality.rowSpan = 2;
@@ -75,8 +75,8 @@ function renderTableRow(tableBody, countryWriters) {
         const tr2 = document.createElement("tr");
         tableBody.appendChild(tr2);
 
-        const tdAuthor2 = createCell("td", countryWriters.author2, tr2);
-        const tdAuthor2Title = createCell("td", countryWriters.author2Title, tr2);
+        const tdAuthor2 = renderTableCell("td", countryWriters.author2, tr2);
+        const tdAuthor2Title = renderTableCell("td", countryWriters.author2Title, tr2);
     }
 }
 
@@ -88,7 +88,7 @@ function renderTableRow(tableBody, countryWriters) {
  * @returns {HTMLTableCellElement}
  */
 
-function createCell(cellType, cellContent, parentRow) {
+function renderTableCell(cellType, cellContent, parentRow) {
     const cellElement = document.createElement(cellType);
     cellElement.innerText = cellContent;
     parentRow.appendChild(cellElement);
@@ -110,7 +110,7 @@ function generateHeader(tableElement, headerList) {
     thead.appendChild(tr);
 
     for (const title of headerList) {
-        createCell("th", title, tr);
+        renderTableCell("th", title, tr);
     }
 }
 
