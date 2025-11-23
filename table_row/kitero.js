@@ -48,18 +48,42 @@ const arr = [
     }
 ]
 
-const theads = [
-    "Nemzetiség",
-    "Szerző",
-    "Mű"
-]
+/**
+ * 
+ * @type {{headers:string[], formFields:FormFields[]}}
+ */
+const tableData = {
+    headers: ["Nemzetiség", "Szerző", "Mű"],
+    formFields: [
+        {
+            id: "nationality", 
+            content: "Nemzetiség:"
+        },
+        {
+            id: "szerzo1", 
+            content: "Szerző:"
+        },
+        {
+            id: "mu1", 
+            content: "Mű:"
+        },
+        {
+            id: "szerzo2", 
+            content: "Másik szerző:"
+        },
+        {
+            id: "mu2", 
+            content: "Mű:"
+        },
+    ]
+}
 
 document.body.appendChild(document.createElement("hr"));
 
 const table = document.createElement("table");
 document.body.appendChild(table)
 
-generateHeader(table, theads);
+generateHeader(table, tableData.headers);
 
 const tbody = document.createElement("tbody");  
 tbody.setAttribute("id", "tbody2")
@@ -76,30 +100,7 @@ formElement.addEventListener('submit', HTMLFormEventListener);
 const newFormElement = document.createElement("form");
 document.body.appendChild(newFormElement);
 
-const inputs = [
-    {
-        id: "nemzetiseg",
-        content: "Nemzetiség:"
-    },
-    {
-        id: "szerzo1",
-        content: "Szerző:"
-    },
-    {
-        id: "mu1",
-        content: "Mű:"
-    },
-    {
-        id: "szerzo2",
-        content: "Másik Szerző:"
-    },
-    {
-        id: "mu2",
-        content: "Mű:"
-    }
-]
-
-inputs.forEach(input => {
+tableData.formFields.forEach(input => {
     createFormElement(newFormElement, input.id, input.content);
 });
 

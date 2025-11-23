@@ -3,6 +3,10 @@
  */
 
 /**
+ * @typedef {{id:string, label:string}} FormFields
+ */
+
+/**
  * 
  * @param {object} data 
  */
@@ -41,6 +45,7 @@ function createFormElement(form, id, labelContent) {
     div.appendChild(input);
 
     const span = document.createElement("span");
+    span.classList.add("error");
     div.appendChild(span);
 
     div.appendChild(document.createElement("br"));
@@ -189,11 +194,64 @@ function HTMLFormEventListener(e) {
     const title2 = title2Element.value;
     emptyObj.author2Title = title2;
 
+    if (!validateFields(nationalityElement, author1Element, title1Element)) {
+        return;
+    }
+
     const tbody = document.querySelector("#tbody2");
     
     renderTableRow(tbody, emptyObj);
 }
 
+/**
+ * 
+ * @param {HTMLInputElement} inputField1 
+ * @param {HTMLInputElement} inputField2 
+ * @param {HTMLInputElement} inputField3 
+ * @returns {boolean}
+ */
+
 function validateFields(inputField1, inputField2, inputField3) {
-    // todo
+    const formElement = inputField1.parentElement;
+
+    const errorElements = formElement.querySelectorAll(".error");
+
+    for (const errorElement of errorElements) {
+        errorElement.innerText = "";
+    }
+
+    if (!validateField(inputField1, "Kötelező mező!") ) {
+        return false;
+    }
+
+    if (!validateField(inputField2, "Kötelező mező!")) {
+        return false;
+    }
+
+    if (!validateField(inputField3, "Kötelező mező!")) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
+ * 
+ * @param {HTMLInputElement} field 
+ * @param {string} msg 
+ * @returns {boolean}
+ */
+
+function validateField(field, msg) {
+    if (field.value == '') {
+        const parentElement = field.parentElement;
+        const textElement = parentElement.querySelector(".error");
+        console.log("parentElement", parentElement)
+        
+        textElement.innerText = msg;
+        
+        return;
+    }
+
+    return true;
 }
